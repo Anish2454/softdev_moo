@@ -1,3 +1,11 @@
+/* 
+atom_is_awesome
+Anish Shenoy, Shaina Peters, Arif Roktim
+SoftDev1 pd07
+K17 -- Moo?
+2017-12-13
+*/
+
 var box = document.getElementById("box");
 var bg = document.getElementsByClassName("full")[0];
 var boxHeight = box.offsetHeight;
