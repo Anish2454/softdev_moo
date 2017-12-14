@@ -22,7 +22,7 @@ var distance = function (x0, y0, x1, y1) {
 };
 
 var maxDist = function (targetX, targetY) {
-	
+
 	var corner1 = distance(targetX, targetY, 0, 0);
 	var corner2 = distance(targetX, targetY, 0, boxHeight);
 	var corner3 = distance(targetX, targetY, boxWidth, 0);
@@ -32,22 +32,27 @@ var maxDist = function (targetX, targetY) {
 
 };
 
+var won = false;
 var findIt = function(e) {
   /* YOUR IMPLEMENTATION */
   var x = e.x;
   var y = e.y;
-  if (distance(x, y, targetX, targetY) < 20 || true){
-  	
+  if (distance(x, y, targetX, targetY) < 20 && !won){
+    won = true;
   	console.log("FOUND!");
-  	box.innerHTML += "<div id='atom' style='position: absolute; left = " + targetX + " ; top = " + targetY + "; background-image: https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiWq6TEy4fYAhWnQ98KHZGwDUUQjRwIBw&url=https%3A%2F%2Fdiscuss.atom.io%2Ft%2Fnew-atom-logo-and-icon%2F8704&psig=AOvVaw214lx_eQdOzz1dV9souk4h&ust=1513275164375019;'></div>"; 
-  	bg.setAttribute("style", "background-color: rgb(" + dist +", " + dist + ", " + 255 + " );");
+  	box.innerHTML += '<div id="atom" style="height: 275px; width: 275px; position: absolute; left = ' +
+                      targetX + ' px; top = ' + targetY +
+                      'px; background-image: url(https://discourse-cdn-sjc1.com/business/uploads/github_atom/490/d8548f4ce56f1599.png);"></div>';
+  	//bg.setAttribute("style", "background-color: rgb(" + dist +", " + dist + ", " + 255 + " );");
   }
-  var maxD = maxDist(targetX, targetY);
-  //console.log("X: " + x);
-  //console.log("Y: " + y);
-  var dist = 255 - (Math.floor(distance(x, y, targetX, targetY) * (255 / maxD)));
-  //console.log(dist);
-  bg.setAttribute("style", "background-color: rgb(" + dist +", " + dist + ", " + 255 + " );");
+  else{
+    var maxD = maxDist(targetX, targetY);
+    //console.log("X: " + x);
+    //console.log("Y: " + y);
+    var dist = 255 - (Math.floor(distance(x, y, targetX, targetY) * (255 / maxD)));
+    //console.log(dist);
+    bg.setAttribute("style", "background-color: rgb(" + dist +", " + dist + ", " + 255 + " );");
+  }
 };
 
 /*
